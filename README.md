@@ -15,7 +15,7 @@ Aplikacja składa się z dwóch serwisów. ImgResizer zajmujący się zmianą ro
 ## Tech requirements
 
 - [PHP 8.1] - with GD lib
-- [Composer] - awesome web-based text editor
+- [Composer]
 
 ## Installation
 
@@ -25,13 +25,13 @@ composer install
 
 ## Configuration
 
-W pliku config/imgPusher/services.yaml zdefiniowane są przykładowe transportery czyli serwisy uploadujące pod wskazaną destynację. Każdy serwis o tagu 'app.img_pusher_transport zostanie' dołączony do kolekcji dostępnych transporteró. Alias serwisu np: 'local1' lub 'produkcja' to transport czyli drugi argument lini poleceń.
+W pliku config/imgPusher/services.yaml zdefiniowane są przykładowe transportery czyli serwisy uploadujące pod wskazaną destynację. Każdy serwis o tagu 'app.img_pusher_transport zostanie' dołączony do kolekcji dostępnych transporterów. Alias serwisu np: 'local1' lub 'produkcja' to transport czyli drugi argument lini poleceń.
 
 Przykładowo:
 
 Transporter ImgPusher_Transport_LocalStorage1 i ImgPusher_Transport_LocalStorage2 potrzebują argumentu pierwszego - destynacji uploadu.
 
-Transporter ImgPusher_Transport_DropboxProd ptorzbuje tokenu do aplikacji dropbox i katalogu uploadu.
+Transporter ImgPusher_Transport_DropboxProd potrzebuje tokenu do aplikacji dropbox i katalogu uploadu.
 
 ## Run
 
@@ -49,7 +49,7 @@ bin/phpspec run
 
 ## Development
 
-Aplikacja została tak zbudowana aby otwartą na rozbudowę. Aby dodawać nowe destynacje pod które ma być uploadowany plik należy albo dopisać kolejny konfig w config/imgPusher/services.yaml jeśli bazujemy na istniejącym transporcie np:
+Aplikacja została tak zbudowana, aby otwartą na rozbudowę. Aby dodawać nowe destynacje pod które ma być uploadowany plik należy albo dopisać kolejny konfig w config/imgPusher/services.yaml jeśli bazujemy na istniejącym transporcie np:
 
 ```
 ImgPusher_Transport_LocalStorage2:
@@ -61,14 +61,15 @@ ImgPusher_Transport_LocalStorage2:
       - { name: 'app.img_pusher_transport', alias: 'local2' }
 ```
 
-lub stworzyć nowy transport, czyli klasę którą będzie implementować interfejs ImgPusherTransport
+lub stworzyć nowy transport, czyli klasę, którą będzie implementować interfejs ImgPusherTransport
 
 
 
 ## Co mnie zastanawia lub boli
 
 Test resizera jest taki sobie. Trzeba by jeszcze sprawdzić czy zwracany box faktycznie zmienia rozmiary ale w tym celu należałoby już to robić na prawdziwym obrazku.
-Nie podoba mi się że definicje transporterów mają potrzebe konfigurowania clienta (drugi argument)
+
+Nie podoba mi się, że definicje transporterów mają potrzebę konfigurowania clienta (drugi argument)
 
 ```
   ImgPusher_Transport_LocalStorage2:
@@ -82,10 +83,11 @@ Nie podoba mi się że definicje transporterów mają potrzebe konfigurowania cl
 ```
 
 ale tak łatwiej było testować i mockować. Gdyby client był tworzony w kontruktorze np new Filesystem() lub new Client($authorizationToken) wtedy obraz jest bardziej klarowny i w konfigu transportu mamy tylko to co nas interesuje.
-Chyba najlepszym wyjściem byłby dziedziczenie danego transportera po rodzicu, definiowanie go jako serwis i przy definicji wywołać calls: setClient() ale to też troche dziwne definiować abstrakcje jako serwis... Musiałbym przymyślec jeszcze, ten ból pojawił się pod koniec pracy :-)
+Chyba najlepszym wyjściem byłby dziedziczenie danego transportera po rodzicu, definiowanie go jako serwis i przy definicji wywołać 'calls': setClient() ale to też troche dziwne definiować abstrakcje jako serwis... Musiałbym przymyślec jeszcze, ten ból pojawił się pod koniec pracy :-)
+
 
 
 ## Docker
 
-Nie zdązyłem :-( ostatnio nie zajmuję się dockere, wyszedłem z prawy i czasu nie starczyło, potrzebowałbym dzień lub dwa żeby odświerzyć temat....
+Nie zdążyłem :-( ostatnio nie zajmuję się dockerem, wyszedłem z prawy i czasu nie starczyło, potrzebowałbym dzień lub dwa żeby odświerzyć temat....
 
