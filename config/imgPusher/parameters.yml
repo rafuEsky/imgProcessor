@@ -1,0 +1,5 @@
+parameters:
+  app.dropbox_prod_token: '%env(APP_DROPBOX_PROD_TOKEN)%'
+  imgResizer:
+    maxLongestSideSize: 150
+    tempSubdirectory: 'imgProcessor'

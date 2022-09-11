@@ -1,0 +1,25 @@
+services:
+  ImgPusher_Transport_LocalStorage1:
+    class: App\ImgPusherTransport\Transport\LocalFilesystem
+    arguments:
+      - '\resizedImages1\'
+      - '@Symfony\Component\Filesystem\Filesystem'
+    tags:
+      - { name: 'app.img_pusher_transport', alias: 'local1' }
+
+  ImgPusher_Transport_LocalStorage2:
+    class: App\ImgPusherTransport\Transport\LocalFilesystem
+    arguments:
+      - '\resizedImages2\'
+      - '@Symfony\Component\Filesystem\Filesystem'
+    tags:
+      - { name: 'app.img_pusher_transport', alias: 'local2' }
+
+  ImgPusher_Transport_DropboxProd:
+    class: App\ImgPusherTransport\Transport\Dropbox
+    arguments:
+      - '%app.dropbox_prod_token%'
+      - '/anyDropboxDir/'
+      - '@Spatie\Dropbox\Client'
+    tags:
+      - { name: 'app.img_pusher_transport', alias: 'produkcja' }
