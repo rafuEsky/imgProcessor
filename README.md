@@ -85,7 +85,8 @@ Nie podoba mi się, że definicje transporterów mają potrzebę konfigurowania 
 ale tak łatwiej było testować i mockować. Gdyby client był tworzony w kontruktorze np new Filesystem() lub new Client($authorizationToken) wtedy obraz jest bardziej klarowny i w konfigu transportu mamy tylko to co nas interesuje.
 Chyba najlepszym wyjściem byłby dziedziczenie danego transportera po rodzicu, definiowanie go jako serwis i przy definicji wywołać 'calls': setClient() ale to też troche dziwne definiować abstrakcje jako serwis... Musiałbym przymyślec jeszcze, ten ból pojawił się pod koniec pracy :-)
 
-
+Użyta libka do dropboxa nie jest szczególnie piękna, brałem co było pod ręką, ma wady bo wiele wyjątków z komunikacji z dropboxem wycisza. 
+W produkcyjnej wersji trzeba by się zastanowić troche dłużej ale skoro działa i jak sądze nie to było celem ćwiczenia aby analizować dostępne libki lub pisać swoje - to zostawiam.
 
 ## Docker
 
