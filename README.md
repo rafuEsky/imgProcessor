@@ -90,6 +90,8 @@ W produkcyjnej wersji trzeba by się zastanowić troche dłużej ale skoro dzia�
 
 Nazewnictwo: imgRezier - ok, imgPuser - ok, ale ta część aplikacyjna która łączy oba serwisy: impProcessor - coś mi nie gra ale nic lepszego nie wymyśliłem :-)
 
+Trzeba by posprzątać śmieci/zbędne konfigi/niepotrzebne biblioteki itp jakie zostały po automatycznym utworzeniu aplikacji
+
 .env to raczej nie jest plik trzymany w repo ale dla uproszczenia wrzucam
 
 ## Docker
