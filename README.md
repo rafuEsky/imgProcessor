@@ -88,6 +88,8 @@ Chyba najlepszym wyjściem byłby dziedziczenie danego transportera po rodzicu, 
 Użyta libka do dropboxa nie jest szczególnie piękna, brałem co było pod ręką, ma wady bo wiele wyjątków z komunikacji z dropboxem wycisza. 
 W produkcyjnej wersji trzeba by się zastanowić troche dłużej ale skoro działa i jak sądze nie to było celem ćwiczenia aby analizować dostępne libki lub pisać swoje - to zostawiam.
 
+Nazewnictwo: imgRezier - ok, imgPuser - ok, ale ta część aplikacyjna która łączy oba serwisy: impProcessor - coś mi nie gra ale nic lepszego nie wymyśliłem :-)
+
 ## Docker
 
 Nie zdążyłem :-( ostatnio nie zajmuję się dockerem, wyszedłem z prawy i czasu nie starczyło, potrzebowałbym dzień lub dwa żeby odświerzyć temat....
